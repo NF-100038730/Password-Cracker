@@ -92,9 +92,8 @@ def bf(zipPath, length):
 
 #SHA256 crack
 def sha256(inpPasswd):
-    #Hashing inputted password via sha256() >> update() methods from hashlib import
-    sha256InpPasswd = hashlib.sha256()
-    sha256InpPasswd.update(inpPasswd.strip().encode())
+    #Storing inputted password
+    sha256InpPasswd = inpPasswd.strip()
     #Declaring output variable in correctPasswd and status for output determination
     correctPasswd = '[+] Password found: '
     status = True
@@ -104,8 +103,8 @@ def sha256(inpPasswd):
             #Hashing each passwd from passwdList via sha256() >> update() methods from hashlib import to compare to sha256InpPasswd
             sha256 = hashlib.sha256()
             sha256.update(passwd.strip().encode())
-            #Checking if md5 is equal to md5InpPasswd
-            if sha256InpPasswd.hexdigest() == sha256.hexdigest():
+            #Checking if sha256 is equal to sha256InpPasswd
+            if sha256InpPasswd == sha256.hexdigest():
                 #Given the correct password is found changing output value and output determination to correct values
                 status = False
                 correctPasswd += passwd.strip()
@@ -117,9 +116,8 @@ def sha256(inpPasswd):
 
 #MD5 crack
 def md5(inpPasswd):
-    #Hashing inputted password via md5() >> update() methods from hashlib import
-    md5InpPasswd = hashlib.md5()
-    md5InpPasswd.update(inpPasswd.strip().encode())
+    #Storing inputted password
+    md5InpPasswd = inpPasswd.strip()
     #Declaring output variable in correctPasswd and status for output determination
     correctPasswd = '[+] Password found: '
     status = True
@@ -130,7 +128,7 @@ def md5(inpPasswd):
             md5 = hashlib.md5()
             md5.update(passwd.strip().encode())
             #Checking if md5 is equal to md5InpPasswd
-            if md5InpPasswd.hexdigest() == md5.hexdigest():
+            if md5InpPasswd == md5.hexdigest():
                 #Given the correct password is found changing output value and output determination to correct values
                 status = False
                 correctPasswd += passwd.strip()
