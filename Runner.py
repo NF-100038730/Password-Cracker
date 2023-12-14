@@ -8,11 +8,10 @@ from PasswordCrack import *
 parser = ArgumentParser()
 parser.usage = 'Password cracker'
 #Declaring the various arguments that can be taken in via add_argument() method from argparse import
-parser.add_argument('--action', type=str, help="str : Actions to perform out of; 'bfd' (zf), 'bf' (zf & l), 'sha256' (p), 'md5' (p), and 'bCrypt' (p & r)")
+parser.add_argument('--action', type=str, help="str : Actions to perform out of; 'bfd' (zf), 'bf' (zf & l), 'sha256' (p), 'md5' (p), and 'bCrypt' (p)")
 parser.add_argument('--zipfile', type=str, help='str : Path of zipfile in need of cracking')
 parser.add_argument('--password', type=str, help='str : Password to be compare/contrasted with other hashes')
 parser.add_argument('--length', type=int, help='int : Length of password to be brute forced (min of 1 recommended max of 4)')
-parser.add_argument('--rounds', type=int, help='int : Number of rounds for bcrypt hashing (min of 4 recommended max of 8)')
 args: Namespace = parser.parse_args()
 
 #Checking the various acceptable actions in comparison to the inputted action
@@ -26,6 +25,6 @@ elif args.action == 'sha256':
 elif args.action == 'md5':
     md5(args.password)
 elif args.action == 'bCrypt':
-    bCrypt(args.password, args.rounds)
+    bCrypt(args.password)
 else:
     print("Sorry, it seems you haven't inputted a necessary and proper action. If in need of assistance run the '--help' command or refer to the README")

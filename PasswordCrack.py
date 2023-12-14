@@ -139,20 +139,19 @@ def md5(inpPasswd):
         print(correctPasswd)
 
 #bCrypt crack
-def bCrypt(inpPassword, rounds):
-    #Hashing inputted password with given rounds via hashpw() method from bcrypt import
-    hashedInp = bcrypt.hashpw(inpPassword.encode(), bcrypt.gensalt(rounds))
+def bCrypt(inpPassword):
+    #Changing inputted password to binary
+    bCryptInpPasswdB = inpPassword.strip().encode()
     #Declaring output variable in correctPasswd and status for output determination
     correctPasswd = '[+] Password found: '
     status = True
     #Opening passwdList in read binary mode to read through each passwd and compare with inputted password
     with open(passwdListPath, 'rb') as passwdList:
         for passwd in tqdm(passwdList, total=10000, unit='passwds'):
-            #Checking if the given sole passwd is equivlent to hashedInp with its salt via checkpw() method from bcrypt import
-            if bcrypt.checkpw(passwd.strip(), hashedInp):
-                #Given the correct password is found changing output value and output determination to correct values
+            #Checking current binary passwd with bCryptInpPasswdB via checkpw() method from bcrypt import
+            if bcrypt.checkpw(passwd.strip(), bCryptInpPasswdB):
                 status = False
-                correctPasswd += passwd.decode()
+                correctPasswd += passwd.strip().decode()
     #Checking status to determine output            
     if status == True:
         print('[!] Password not found.')

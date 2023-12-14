@@ -21,8 +21,7 @@
 
 ## Command Line Arguments -
 ##### ‣ --help ⊰ｉ⊱ When ran (via program) prints all information listed here
-##### ‣ --action ⊰ｉ⊱ str : Actions to perform out of; bfd (zf), bf (zf & l), sha256 (p), md5 (p), and bCrypt (p & r)
+##### ‣ --action ⊰ｉ⊱ str : Actions to perform out of; bfd (zf), bf (zf & l), sha256 (p), md5 (p), and bCrypt (p)
 ##### ‣ --zipfile ⊰ｉ⊱ str : Path of zipfile in need of cracking
 ##### ‣ --password ⊰ｉ⊱ str : Password to be compare/contrasted with other hashes
 ##### ‣ --length ⊰ｉ⊱ int : Length of password to be brute forced (min of 1 recommended max of 4)
-##### ‣ --rounds ⊰ｉ⊱ int : Number of rounds for bcrypt hashing (min of 4 recommended max of 8)
